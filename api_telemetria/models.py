@@ -40,7 +40,7 @@ class Medicao(models.Model):
     tipo = models.CharField(max_length=45)
     def __str__(self):
         return self.tipo
-    unidadeMedida = models.ForeignKey(UnidadeMedida, on_delete=models.DO_NOTHING)
+    unidadeMedida = models.ForeignKey(UnidadeMedida, on_delete=models.PROTECT)
 
 class MedicaoVeiculo(models.Model):
     veiculo = models.ForeignKey(Veiculo, on_delete=models.DO_NOTHING)
