@@ -62,3 +62,17 @@ class MedicaoVeiculoSerializer(serializers.ModelSerializer):
             'data': {'help_text': 'Data e hora da medição, essa informação deve vir da automação'},
             'valor': {'help_text': 'Valor medido na automação.'},
             }
+
+class UploadCSVSerializer(serializers.Serializer):
+    arquivo = serializers.FileField()
+
+    def validate_arquivo(self, value):
+        if not value.name.lower().endswith(".csv"):
+            raise serializers.ValidationError("O arquivo enviado")
+        return value
+
+
+class MedicaoVeiculoTempSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.MedicaoVeiculoTemp
+        fields = "__all__"

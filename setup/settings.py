@@ -134,3 +134,24 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+MQTT = {
+    "HOST": "jaragua.lmq.cloudamqp.com",
+    "PORT": 8883,
+    "USERNAME": "qhmqhsgs:qhmqhsgs",   # formato vhost:username obrigatório no CloudAMQP
+    "PASSWORD": "owm17UsNUz4Jcb7LtugOAELVgds2AxmX",
+    "TOPIC": "sequisersim",
+    "KEEPALIVE": 60,
+}
+
+INSTALLED_APPS += ['channels']
+ASGI_APPLICATION = 'setup.asgi.application'  # crie asgi.py
+
+CHANNEL_LAYERS = {
+    'default': {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    }
+}
